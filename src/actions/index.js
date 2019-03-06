@@ -7,12 +7,12 @@ export const FETCHING_CHARACTERS_FAILURE = 'FETCHING_CHARACTERS_FAILURE';
 
 
 export const getCharacters = () => dispatch => {
-    dispatchEvent({ type: FETCHING_CHARACTERS_START });
+    dispatch({ type: FETCHING_CHARACTERS_START });
         axios
             .get('https://swapi.co/api/people/')
             .then(res => {
                 dispatch({ type:FETCHING_CHARACTERS_SUCCESS, 
-                    payload: res.data});
+                    payload: res.data.results});
             })
             .catch(err => {
                 dispatch({
